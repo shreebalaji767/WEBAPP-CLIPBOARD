@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Clipboard — a fast, private, browser-only clipboard workspace."
+  >
+
+  <meta name="theme-color" content="#315efb">
+
+  <title>Clipboard — Browser Clipboard Workspace</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header class="app-header">
+    <a class="brand" href="#" aria-label="Clipboard home">
+      <span class="brand-mark">C</span>
+      <span>Clipboard</span>
+    </a>
+
+    <div class="header-actions">
+      <button
+        id="themeBtn"
+        class="icon-btn"
+        type="button"
+        title="Toggle theme"
+        aria-label="Toggle theme"
+      >☾</button>
+
+      <button
+        id="clearAllBtn"
+        class="ghost danger"
+        type="button"
+      >
+        Clear all
+      </button>
+    </div>
+  </header>
+
+
+  <main class="app-shell">
+
+    <section class="hero">
+
+      <div>
+        <p class="eyebrow">BROWSER-ONLY WORKSPACE</p>
+
+        <h1>Your clipboard, organized.</h1>
+
+        <p class="subtitle">
+          Create temporary snippets, copy them instantly, edit when needed,
+          and search the current workspace.
+        </p>
+      </div>
+
+      <div class="privacy-pill">
+        ● No login · No database · No localStorage
+      </div>
+
+    </section>
+
+
+    <!-- Composer -->
+
+    <section class="composer card">
+
+      <div class="composer-top">
+
+        <input
+          id="titleInput"
+          type="text"
+          maxlength="100"
+          placeholder="Snippet title (optional)"
+          autocomplete="off"
+        >
+
+        <span id="charCount">
+          0 characters
+        </span>
+
+      </div>
+
+
+      <textarea
+        id="textInput"
+        maxlength="20000"
+        placeholder="Paste or type something here…"
+        spellcheck="true"
+      ></textarea>
+
+
+      <div class="composer-bottom">
+
+        <div class="format-tools">
+
+          <button
+            type="button"
+            data-insert="**bold**"
+          >
+            Bold
+          </button>
+
+          <button
+            type="button"
+            data-insert="`code`"
+          >
+            Code
+          </button>
+
+          <button
+            type="button"
+            data-insert="- item"
+          >
+            List
+          </button>
+
+        </div>
+
+
+        <button
+          id="addBtn"
+          class="primary"
+          type="button"
+        >
+          + Add snippet
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- Search / Sorting -->
+
+    <section class="toolbar">
+
+      <div class="search-wrap">
+
+        <span aria-hidden="true">⌕</span>
+
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Search snippets…"
+          autocomplete="off"
+        >
+
+      </div>
+
+
+      <select
+        id="sortSelect"
+        aria-label="Sort snippets"
+      >
+        <option value="newest">Newest first</option>
+        <option value="oldest">Oldest first</option>
+        <option value="title">Title A–Z</option>
+        <option value="longest">Longest first</option>
+      </select>
+
+
+      <span
+        id="countLabel"
+        class="count-label"
+      >
+        0 snippets
+      </span>
+
+    </section>
+
+
+    <!-- Empty state -->
+
+    <section
+      id="emptyState"
+      class="empty card"
+    >
+
+      <div class="empty-icon">
+        ⌘
+      </div>
+
+      <h2>
+        No snippets yet
+      </h2>
+
+      <p>
+        Add your first snippet above.
+        Everything stays in this open page only.
+      </p>
+
+    </section>
+
+
+    <!-- Snippets -->
+
+    <section
+      id="list"
+      class="snippet-grid"
+      aria-live="polite"
+    ></section>
+
+  </main>
+
+
+  <!-- Toast -->
+
+  <div
+    id="toast"
+    class="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+
+  <!-- Edit dialog -->
+
+  <dialog id="editDialog">
+
+    <form
+      method="dialog"
+      id="editForm"
+      class="dialog-card"
+    >
+
+      <div class="dialog-head">
+
+        <h2>
+          Edit snippet
+        </h2>
+
+        <button
+          value="cancel"
+          class="icon-btn"
+          type="submit"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <label>
+        Title
+
+        <input
+          id="editTitle"
+          type="text"
+          maxlength="100"
+          autocomplete="off"
+        >
+      </label>
+
+
+      <label>
+        Content
+
+        <textarea
+          id="editText"
+          maxlength="20000"
+        ></textarea>
+      </label>
+
+
+      <div class="dialog-actions">
+
+        <button
+          value="cancel"
+          class="ghost"
+          type="submit"
+        >
+          Cancel
+        </button>
+
+        <button
+          id="saveEditBtn"
+          value="default"
+          class="primary"
+          type="submit"
+        >
+          Save changes
+        </button>
+
+      </div>
+
+    </form>
+
+  </dialog>
+
+
+  <noscript>
+    <div class="noscript-message">
+      This application requires JavaScript to be enabled.
+    </div>
+  </noscript>
+
+
+  <script src="js/app.js"></script>
+
+</body>
+</html>
