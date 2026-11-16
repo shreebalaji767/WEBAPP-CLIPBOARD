@@ -76,7 +76,7 @@ function edit(id) {
  if (typeof dialog.showModal === "function") dialog.showModal(); else notify("This browser does not support the edit dialog.");
 }
 function saveEdit(e) {
- e.preventDefault(); const x = state.snippets.find(v => v.id === state.editingId); if (!x) { dialog.close(); return; }
+ e.preventDefault(); if (!e.submitter || e.submitter.id !== "saveEditBtn") { dialog.close(); return; } const x = state.snippets.find(v => v.id === state.editingId); if (!x) { dialog.close(); return; }
  const text = $("#editText").value.trim(); if (!text) { notify("Content cannot be empty"); $("#editText").focus(); return; }
  x.title = $("#editTitle").value.trim() || "Untitled snippet"; x.text = text; x.category = $("#editCategory").value.trim() || "General"; x.tags = cleanTags($("#editTags").value); x.updatedAt = Date.now();
  state.editingId = null; dialog.close(); save(); render(); notify("Snippet updated");
