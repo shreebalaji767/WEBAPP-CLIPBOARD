@@ -24,6 +24,9 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Check JavaScript syntax
+        run: node --check js/app.js
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
