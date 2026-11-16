@@ -966,3 +966,89 @@ body.dark {
   }
 
 }
+
+/* Device-wide responsive and accessibility refinements */
+:root {
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body.dark { color-scheme: dark; }
+img, svg, video, canvas { max-width: 100%; }
+button, select, input, textarea { min-width: 0; }
+button, select { min-height: 40px; touch-action: manipulation; }
+button:focus-visible, a:focus-visible, select:focus-visible,
+input:focus-visible, textarea:focus-visible {
+  outline: 3px solid rgba(49, 94, 251, .35);
+  outline-offset: 2px;
+}
+.brand-mark {
+  display: block;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+@media (max-width: 900px) {
+  .app-shell { padding-top: 38px; }
+  .hero { align-items: flex-start; flex-direction: column; gap: 14px; }
+  .privacy-pill { white-space: normal; max-width: 100%; }
+  .snippet-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .app-header {
+    height: 62px;
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+  }
+  .brand { gap: 8px; font-size: 17px; }
+  .brand-mark { width: 32px; height: 32px; flex-basis: 32px; }
+  .app-shell { padding: 28px 12px calc(48px + env(safe-area-inset-bottom)); }
+  h1 { font-size: clamp(32px, 9vw, 46px); overflow-wrap: anywhere; }
+  .subtitle { font-size: 15px; }
+  .composer { padding: 12px; }
+  .composer-top { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .composer-top input { width: 100%; padding: 8px 4px; }
+  #charCount { align-self: flex-end; }
+  .composer textarea { min-height: 150px; padding: 13px 4px; }
+  .composer-bottom { align-items: stretch; flex-direction: column; gap: 10px; padding: 10px 4px 2px; }
+  .format-tools { max-width: 100%; overflow-x: auto; padding-bottom: 3px; }
+  .format-tools button { flex: 0 0 auto; min-height: 42px; }
+  .composer-bottom > .primary { width: 100%; min-height: 46px; }
+  .toolbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 9px; margin-top: 20px; }
+  .search-wrap { grid-column: 1 / -1; min-width: 0; }
+  .toolbar select { width: 100%; max-width: 100%; }
+  .count-label { align-self: center; justify-self: end; white-space: normal; text-align: right; }
+  .snippet-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .snippet { padding: 14px; }
+  .snippet-head { flex-wrap: wrap; }
+  .snippet-time { white-space: normal; }
+  .snippet-actions button { flex: 1 1 auto; min-height: 42px; }
+  .empty { padding: 38px 16px; }
+  .dialog-card { padding: 16px; max-height: calc(100dvh - 24px); overflow-y: auto; }
+  .dialog-card textarea { min-height: 180px; }
+  .toast {
+    bottom: max(16px, env(safe-area-inset-bottom));
+    width: max-content; max-width: calc(100vw - 24px); text-align: center;
+  }
+}
+@media (max-width: 380px) {
+  .header-actions { gap: 5px; }
+  .header-actions button { padding: 7px 9px; font-size: 13px; }
+  .brand { font-size: 16px; }
+  .app-shell { padding-left: 10px; padding-right: 10px; }
+  .privacy-pill { font-size: 11px; padding: 8px 10px; }
+  .snippet-actions { gap: 6px; }
+  .snippet-actions button { padding: 8px 7px; font-size: 11px; }
+  .dialog-actions { flex-wrap: wrap; }
+  .dialog-actions button { flex: 1 1 120px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
