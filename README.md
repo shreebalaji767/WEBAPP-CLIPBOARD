@@ -6,211 +6,105 @@ A fast, responsive, browser-only clipboard workspace.
 
 This project is intentionally completely static.
 
-* No database
-* No backend
-* No API
-* No localStorage
-* No sessionStorage
-* No cookies
-* No login
-* No signup
-* No user accounts
-* No environment variables
-* No build process
+- No database
+- No backend
+- No API
+- No localStorage
+- No sessionStorage
+- No cookies
+- No login or signup
+- No user accounts
+- No environment variables
+- No build process or package installation
 
-Clipboard entries are stored **only in JavaScript memory while the page is open**.
-
-If the user refreshes or closes the page, the snippets are removed.
+Clipboard entries are stored **only in JavaScript memory while the page is open**. Refreshing or closing the page clears the snippets.
 
 ## Features
 
-* Add clipboard snippets
-* Optional snippet titles
-* Copy snippets with one click
-* Edit snippets
-* Duplicate snippets
-* Delete individual snippets
-* Clear all snippets
-* Search snippets
-* Sort by newest
-* Sort by oldest
-* Sort by title
-* Sort by longest content
-* Character counter
-* Dark mode
-* Light mode
-* Responsive desktop layout
-* Responsive mobile layout
-* Touch-friendly controls
-* Keyboard shortcut: `Ctrl + Enter`
-* Mac shortcut: `Command + Enter`
-* Browser Clipboard API support
-* Clipboard fallback for compatible browsers
-* No persistent storage
+- Add clipboard snippets with optional titles
+- Copy, edit, duplicate, and delete snippets
+- Clear all snippets
+- Search snippets
+- Sort by newest, oldest, title, or longest content
+- Character counter
+- Dark and light themes
+- Responsive desktop and mobile layouts
+- Touch-friendly controls
+- Keyboard shortcut: `Ctrl + Enter` / `Command + Enter`
+- Browser Clipboard API with a compatible fallback
+- No persistent storage
+
+## GitHub Pages Hosting
+
+This repository is configured as a plain static website. GitHub Pages deployment is automated with GitHub Actions.
+
+**Published URL:** https://shreebalaji767.github.io/WEBAPP-CLIPBOARD/
+
+Deployment details:
+
+- Source branch: `main`
+- Site directory: repository root (`./`)
+- Build command: none
+- Dependencies: none
+- Environment variables: none
+- Deployment workflow: `.github/workflows/pages.yml`
+
+Every push to `main` automatically publishes the static files. You can also run the workflow manually from the **Actions** tab using **Deploy static site to GitHub Pages**.
+
+If this repository has not previously used GitHub Pages with Actions, open **Settings → Pages** once and set **Build and deployment → Source** to **GitHub Actions**. No other hosting setup is required.
 
 ## Project Structure
 
 ```text
 WEBAPP-CLIPBOARD/
-│
+├── .github/
+│   └── workflows/
+│       └── pages.yml
+├── .nojekyll
 ├── index.html
 ├── README.md
-│
 ├── css/
 │   └── style.css
-│
 └── js/
     └── app.js
 ```
 
 ## Run Locally
 
-This is a plain static website and does not require Node.js, Python, PHP, or any other server-side framework.
-
-You can open `index.html` directly in a browser.
-
-For a local static server, Python can also be used:
+Open `index.html` directly in a modern browser, or run a local static server:
 
 ```bash
 python -m http.server 8000
 ```
 
-Then open:
+Then visit http://localhost:8000.
 
-```text
-http://localhost:8000
-```
+## Privacy and Storage Model
 
-## Render Static Site
-
-The project can be deployed as a Render Static Site.
-
-Recommended configuration:
-
-```text
-Repository:
-shreebalaji767/WEBAPP-CLIPBOARD
-
-Branch:
-main
-
-Root Directory:
-leave empty
-
-Build Command:
-leave empty
-
-Publish Directory:
-./
-```
-
-No environment variables are required.
-
-## Privacy / Storage Model
-
-The application does not save clipboard snippets permanently.
-
-There is no:
-
-```text
-Database
-Backend
-API
-localStorage
-sessionStorage
-Cookie
-Login
-Signup
-Account
-```
-
-The application stores snippets in an ordinary JavaScript array in memory.
-
-For example:
+The application keeps snippets in a normal JavaScript array in memory:
 
 ```javascript
 const state = {
-    snippets: []
+  snippets: []
 };
 ```
 
 This means:
 
-1. User opens the website.
-2. User adds snippets.
-3. Snippets remain available while that page is open.
-4. User can search, edit, duplicate, copy, or delete them.
-5. Refreshing the page clears the workspace.
-6. Closing the page clears the workspace.
+1. Open the website.
+2. Add snippets.
+3. Use the snippets while the page remains open.
+4. Refresh or close the page and the snippets are cleared.
+
+Nothing is sent to a server or saved in browser storage by this application.
 
 ## Clipboard Permissions
 
-The application uses:
-
-```javascript
-navigator.clipboard.writeText()
-```
-
-when supported by the browser.
-
-HTTPS is recommended for the modern Clipboard API.
-
-A fallback copy method is also included for compatible browsers where the modern Clipboard API is unavailable.
-
-## No Build System
-
-There is no:
-
-```text
-npm install
-npm run build
-webpack
-vite
-react
-node_modules
-```
-
-The browser loads:
-
-```text
-index.html
-```
-
-which loads:
-
-```text
-css/style.css
-js/app.js
-```
+The app uses `navigator.clipboard.writeText()` when supported. GitHub Pages serves the site over HTTPS, which supports the modern Clipboard API in compatible browsers. A fallback copy method is also included.
 
 ## Browser Compatibility
 
-The application is designed for modern browsers including:
-
-* Google Chrome
-* Microsoft Edge
-* Mozilla Firefox
-* Safari
-* Android Chrome
-* iPhone/iPad Safari
-* Android tablets
-* Desktop browsers
-
-## Keyboard Shortcut
-
-Press:
-
-```text
-Ctrl + Enter
-```
-
-on Windows/Linux, or:
-
-```text
-Command + Enter
-```
-
-on macOS to add the current snippet.
+Designed for modern desktop and mobile browsers, including Chrome, Edge, Firefox, Safari, Android Chrome, and iOS Safari.
 
 ## License
 
