@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Clipboard</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4775ff"/>
+      <stop offset="1" stop-color="#2449c7"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="17" fill="url(#bg)"/>
+  <path d="M23 13h18a5 5 0 0 1 5 5v3h3a4 4 0 0 1 4 4v25a5 5 0 0 1-5 5H16a5 5 0 0 1-5-5V25a4 4 0 0 1 4-4h3v-3a5 5 0 0 1 5-5Zm0 6v5h18v-5H23Zm-6 11v23h31V30H17Zm7 6h17v3H24v-3Zm0 7h17v3H24v-3Z" fill="#fff"/>
+</svg>
